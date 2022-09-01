@@ -29,3 +29,14 @@ function getUserFullName({ name, lastname }) {
 
 const fullName = getUserFullName({ name: 'Juan', lastname: 'Perez' })
 console.log(fullName);
+
+/**
+ * Arrow functions / funciones flechitas
+ **********************************************
+ */
+const getMonth = () => {
+  return 'Septiembre';
+}
+
+const month = getMonth();
+console.log(month)
