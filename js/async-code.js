@@ -1,10 +1,16 @@
-// Promise request
+/**
+ * Request con promesas (then-catch)
+ **********************************************
+ */
 fetch('https://random-words-api.vercel.app/word?ref=publicapis.dev')
   .then(response => response.json())
   .then(response => console.log(response))
   .catch(error => console.error('Here:', error));
 
-// Async - await request
+/**
+ * Request con async-await
+ **********************************************
+ */
 (async () => {
   try {
     const response = await fetch('https://random-words-api.vercel.app/word?ref=publicapis.dev');
