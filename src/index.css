@@ -1,7 +1,15 @@
 :root {
   --white: #FFF;
   --gray-500: #F6F6F6;
+  --gray-600: #CED4DA;
+  --gray-650: #ABB5BE;
+  --gray-700: #68717A;
+  --gray-750: #6C757D;
   --purple-500: #7749F8; 
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body,

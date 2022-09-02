@@ -16,6 +16,9 @@
   /* Color */
   background-color: var(--white);
 
+  /* Estilo */
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.1);
+
   /* Alineacion */
   display: flex;
   flex-direction: column;
@@ -30,6 +33,8 @@
 
 .App-form {
   margin-top: 2rem;
+  width: 100%;
+  padding: 0 96px;
   
   /* Alineacion */
   display: flex;
@@ -38,6 +43,26 @@
   align-items: center;
 }
 
+.App-form-forgot-password {
+  font-size: 14px;
+  color: var(--gray-750);
+  font-weight: 600;
+  margin-top: 12px;
+
+  text-decoration: none;
+
+  /* Alineacion */
+  align-self: flex-start;
+}
+
+.App-form-button-login {
+  margin-top: 48px;
+}
+
 .App-form-button {
   margin-top: 1rem;
+}
+
+.App-form-password {
+  margin-top: 18px;
 }

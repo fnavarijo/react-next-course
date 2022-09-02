@@ -1,0 +1,25 @@
+.Input {
+  width: 100%;
+
+  /* Alineacion */
+  display: flex;
+  flex-direction: column;
+}
+
+.Input-label {
+  font-size: 16px;
+  color: var(--gray-700);
+}
+
+.Input-input {
+  margin-top: 8px;
+
+  /* Styling */
+  border-radius: 4px;
+  padding: 8px 16px;
+  border: 1px solid var(--gray-600);
+}
+
+.Input-input::placeholder {
+  color: var(--gray-650);
+}
