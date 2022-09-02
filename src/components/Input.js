@@ -3,11 +3,9 @@ import PropTypes from 'prop-types';
 
 import './Input.css';
 
-function Input({ name, label, type, className, placeholder }) {
-  const [value, setValue] = useState('');
-
+function Input({ name, label, type, className, placeholder, value, onChange }) {
   const handleChange = (e) => {
-    setValue(e.target.value);
+    onChange(e.target.value);
   };
 
   return (
@@ -28,11 +26,13 @@ function Input({ name, label, type, className, placeholder }) {
 }
 
 Input.propTypes = {
+  value: PropTypes.string.isRequired, 
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   type: PropTypes.string,
   placeholder: PropTypes.string,
   className: PropTypes.string,
+  onChange: PropTypes.func.isRequired
 };
 
 Input.defaultProps = {
