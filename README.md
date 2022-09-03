@@ -1,21 +1,20 @@
 # react-next-course
 
-<!-- Repository with the information, lessons and project for LaserAnts react-next course -->
 Repositorio con la información, lecciones y proyectos para el curso de react-next de LaserAnts.
 
 ## create-react-app
-1. Create react app
-2. Create a single component (button) - function component
-3. Explain about component composition
+El objetivo es crear la pantalla de Login, explicando los conceptos basicos de React.
 
-# 1
-- Props validation
-- Classname and styles
+### Conocimientos esperados
+- Creacion de componentes (function components) 
+- State en los componentes
+- Props y su validacion
 - Event handling
-- Input handling
+- Introducción a hooks
 
-#2
-- React validation
+#### Screenshot
+<img src="./screenshots/product-final.png" />
+
 
 ## Configuracion inicial
 1. Instalar create-react-app via npm
