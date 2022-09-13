@@ -1,0 +1,12 @@
+.loginContainer {
+  padding: 0 6rem;
+}
+
+.loginButtons {
+  display: flex;
+  flex-direction: column;
+}
+
+.loginButtons > * {
+  margin-top: 1rem;
+}

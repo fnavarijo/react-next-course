@@ -1,11 +1,12 @@
 import '../styles/globals.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Layout from '../components/layout';
+import AuthLayout from '../components/layout/authentication';
 
 function MyApp({ Component, pageProps }) {
-  return (<Layout>
+  return (<AuthLayout>
       <Component {...pageProps} />
-    </Layout>)
+    </AuthLayout>)
 }
 
 export default MyApp
