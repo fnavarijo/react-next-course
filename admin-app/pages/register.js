@@ -47,6 +47,7 @@ function Register() {
             placeholder="Contraseña"
             required
             minLength={6}
+            pattern="^(?=.*\d)(?=.*\S).{6,}$"
             value={password}
             onChange={onPasswordNameChange}
           />
