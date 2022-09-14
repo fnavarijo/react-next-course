@@ -1,5 +1,5 @@
 import axios from 'axios';
 
 export const instance = axios.create({
-  baseURL: 'https://proyectos-admin.azurewebsites.net',
+  baseURL: process.env.NEXT_PUBLIC_BACKEND_API,
 });
