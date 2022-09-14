@@ -1,25 +1,16 @@
-import axios from "axios";
 import { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 import styles from "../styles/pages/Login.module.css";
 
+import { registerAccount } from '../api/account/register';
+
 function Register() {
   const [validated, setValidated] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-
-  const registerAccount = async ({ email, password }) => {
-    const response = await axios.post(
-      "https://proyectos-admin.azurewebsites.net/api/Accounts",
-      {
-        email,
-        password,
-      }
-    );
-  };
 
   const doLogin = async (e) => {
     e.preventDefault();
