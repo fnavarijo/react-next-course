@@ -59,10 +59,13 @@ function Register() {
             placeholder="Contraseña"
             required
             minLength={6}
+            pattern={password}
             value={confirmPassword}
             onChange={onConfirmPasswordNameChange}
           />
-          <Form.Control.Feedback type="invalid">Ingrese contraseña valida!</Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">
+            { confirmPassword !== password ? 'Contraseñas no coinciden': 'Ingrese contraseña valida' }
+          </Form.Control.Feedback>
         </Form.Group>
         <div className={styles.loginButtons}>
           <Button type="submit">Registrar</Button>
