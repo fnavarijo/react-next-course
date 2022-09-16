@@ -5,12 +5,15 @@ import Button from "react-bootstrap/Button";
 import styles from "../styles/pages/Login.module.css";
 
 import { registerAccount } from '../api/account/register';
+import { useSession } from '../custom-hooks/useSession';
 
 function Register() {
   const [validated, setValidated] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  useSession();
 
   const doLogin = async (e) => {
     e.preventDefault();

@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useCookies } from 'react-cookie';
 import { useRouter } from 'next/router';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 import { login } from '../api/account/login';
+import { useSession } from '../custom-hooks/useSession';
 
 import styles from "../styles/pages/Login.module.css";
 
@@ -14,6 +15,7 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  useSession();
   const router = useRouter();
 
   const doLogin = async (e) => {
@@ -30,13 +32,6 @@ function Login() {
 
     setValidated(true);
   };
-
-  useEffect(() => {
-    const { token } = cookies;
-    if (token) {
-      router.push('/dashboard');
-    }
-  }, [])
 
   const onUserNameChange = (e) => setEmail(e.target.value);
   const onPasswordNameChange = (e) => setPassword(e.target.value);
