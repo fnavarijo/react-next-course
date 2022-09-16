@@ -11,6 +11,8 @@ export function useSession () {
     const { token } = cookies;
     if (token) {
       router.push('/dashboard');
+    } else {
+      router.push('/login');
     }
   }, []);
 }

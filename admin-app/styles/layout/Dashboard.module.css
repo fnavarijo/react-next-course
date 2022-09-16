@@ -1,0 +1,13 @@
+.dashboardContainer {
+  max-width: 1080px;
+  background-color: #fff;
+  margin: 2rem 120px;
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dashboardNav {
+  justify-content: flex-end;
+  background-color: #fff;
+  margin: 1rem;
+  border-radius: 8px;
+}
