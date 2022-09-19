@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { useCookies } from 'react-cookie';
 import { useRouter } from 'next/router';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Cookie from 'js-cookie';
 
 import { login } from '../api/account/login';
 import { useSession } from '../custom-hooks/useSession';
@@ -10,7 +10,6 @@ import { useSession } from '../custom-hooks/useSession';
 import styles from "../styles/pages/Login.module.css";
 
 function Login() {
-  const [cookies, setCookie] = useCookies(['token', 'expirationDate']);
   const [validated, setValidated] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,8 +23,8 @@ function Login() {
 
     if (form.checkValidity()) {
       const { token, expirationDate } = await login({ email, password });
-      setCookie('token', token);
-      setCookie('expirationDate', expirationDate)
+      Cookie.set('token', token);
+      Cookie.set('expirationDate', expirationDate);
 
       router.push('/dashboard');
     }
