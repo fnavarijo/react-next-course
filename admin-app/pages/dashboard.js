@@ -17,7 +17,12 @@ function Dashboard () {
   )
 
   useEffect(() => {
+    async function fetchProject () {
+      const projects = await getProjects();
+      console.log('Projects', projects);
+    }
 
+    fetchProject();
   }, []);
 
   return (
