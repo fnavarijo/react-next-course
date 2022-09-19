@@ -1,0 +1,12 @@
+.container {
+  padding: 4rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header > h1 {
+  display: inline-block;
+}
