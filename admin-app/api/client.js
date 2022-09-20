@@ -6,13 +6,14 @@ export const instance = axios.create({
 });
 
 instance.interceptors.request.use((config) => {
-  const authToken = Cookies.get('token');
+  const { authorization } = config.headers;
   
+  if (!authorization) {
+    const authToken = Cookies.get('token');
+    Object.assign(config.headers, { authorization: `Bearer ${authToken}` });
+  } 
+
   return {
     ...config,
-    headers: {
-      authorization:
-        `Bearer ${authToken}`,
-    },
   };
 });

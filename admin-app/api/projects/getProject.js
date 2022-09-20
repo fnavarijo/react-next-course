@@ -1,7 +1,7 @@
 import { instance } from "../client";
 
-export async function getProject({ proyectoID }) {
-  const { data } = await instance.get(`/api/Projects/${proyectoID}`);
+export async function getProject({ proyectoID }, config) {
+  const { data } = await instance.get(`/api/Projects/${proyectoID}`, { ...config });
 
   return data;
 }

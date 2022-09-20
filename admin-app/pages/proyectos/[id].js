@@ -7,40 +7,43 @@ import { getProject } from '../../api/projects/getProject';
 
 import styles from '../../styles/pages/Proyectos.module.css';
 
-export default function Proyectos () {
-  const { query } = useRouter();
-  const [currentProject, setCurrentProject] = useState({});
-
-  useEffect(() => {
-    async function fetchProject () {
-      const proyecto = await getProject({ proyectoID: query.id });
-
-      setCurrentProject(proyecto);
-    }
-
-    fetchProject();
-  }, [])
-
+export default function Proyectos ({ proyecto }) {
   return (
-    <PageArticle title={currentProject.nombre}>
+    <PageArticle title={proyecto.nombre}>
       <section>
         <div>
           <span className={styles.projectPropertyLabel}>Fecha inicio:</span>
-          { currentProject.fechaInicio }
+          { proyecto.fechaInicio }
         </div>
         <div>
           <span className={styles.projectPropertyLabel}>Fecha final:</span>
-          { currentProject.fechaFin }
+          { proyecto.fechaFin }
         </div>
         <div>
           <span className={styles.projectPropertyLabel}>Presupuesto:</span>
-          Q. { parseFloat(currentProject.presupuesto).toFixed(2) }
+          Q. { parseFloat(proyecto.presupuesto).toFixed(2) }
         </div>
         <div>
           <span className={styles.projectPropertyLabel}>Alcance:</span>
-          { currentProject.alcance }
+          { proyecto.alcance }
         </div>
       </section>
     </PageArticle>
   )
+}
+
+export async function getServerSideProps ({ query, req }) {
+  const { token } = req.cookies;
+  const proyecto = await getProject(
+    { proyectoID: query.id },
+    { headers:
+      { authorization: `Bearer ${token}` }
+    }
+  );
+  
+  return {
+    props: {
+      proyecto
+    }
+  }
 }
