@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
-import dayjs from 'dayjs';
-import customParseFormat from 'dayjs/plugin/customParseFormat';
-import Button from "react-bootstrap/Button";
+import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
 
 import PageArticle from "../components/section/PageArticle";
 import Dialog from "../components/common/Dialog";
+import DashboardCard from "../components/dashboard/DashboardCard";
 import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 import { getProjects } from "../api/projects/getProjects";
 import { createProjects } from "../api/projects/createProjects";
+
+import styles from '../styles/pages/Dashboard.module.css';
 
 dayjs.extend(customParseFormat);
 
@@ -24,12 +27,14 @@ function Dashboard() {
   const createNewProject = async () => {
     const project = await createProjects({
       ...projectInfo,
-      fechaInicio: dayjs(projectInfo.fechaInicio, 'MM/D/YYYY').toISOString(),
-      fechaFin: dayjs(projectInfo.fechaFin, 'MM/D/YYYY').toISOString()
+      fechaInicio: dayjs(projectInfo.fechaInicio, "MM/D/YYYY").toISOString(),
+      fechaFin: dayjs(projectInfo.fechaFin, "MM/D/YYYY").toISOString(),
     });
 
     const userProjects = await getProjects();
     setProjects(userProjects);
+    setProjectInfo({});
+    setIsDialogOpen(false);
   };
 
   const options = (
@@ -49,7 +54,19 @@ function Dashboard() {
 
   return (
     <PageArticle title="Proyectos" options={options}>
-      <div>{projects.length === 0 ? "Nada por aqui." : <div>Hello</div>}</div>
+      <div className={styles.dashboardGrid}>
+        {projects.length === 0
+          ? "Nada por aqui."
+          : projects.map((project, index) => (
+              <DashboardCard
+                nombre={project.nombre}
+                fechaInicio={dayjs(project.fechaInicio).format('DD/M/YYYY')}
+                fechaFin={dayjs(project.fechaFin).format('DD/M/YYYY')}
+                proyectoID={project.proyectoID}
+                key={index}
+              />
+            ))}
+      </div>
       <Dialog
         title="Crear proyecto"
         isOpen={isDialogOpen}
