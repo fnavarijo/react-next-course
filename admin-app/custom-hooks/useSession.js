@@ -7,10 +7,13 @@ export function useSession () {
 
   useEffect(() => {
     const token = Cookie.get('token');
-    if (token) {
+    const isAuthRoute = ['/login', '/register'].includes(router.pathname);
+    
+    if (token && isAuthRoute) {
       router.push('/dashboard');
-    } else {
+    } else if (!token) {
       router.push('/login');
     }
+    
   }, []);
 }
