@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 
 import PageArticle from "../components/section/PageArticle";
@@ -6,6 +6,8 @@ import PageArticle from "../components/section/PageArticle";
 import { getProjects } from '../api/projects/getProjects';
 
 function Dashboard () {
+  const [projects, setProjects] = useState([]);
+
   const createNewProject = () => {
     console.log('Creating');
   }
@@ -18,8 +20,8 @@ function Dashboard () {
 
   useEffect(() => {
     async function fetchProject () {
-      const projects = await getProjects();
-      console.log('Projects', projects);
+      const userProjects = await getProjects();
+      setProjects(userProjects);
     }
 
     fetchProject();
@@ -28,7 +30,7 @@ function Dashboard () {
   return (
     <PageArticle title="Proyectos" options={options} >
       <div>
-        Hola mundo
+        { projects.length === 0 ? 'Nada por aqui.' : <div>Hello</div> }
       </div>
     </PageArticle>
   )
