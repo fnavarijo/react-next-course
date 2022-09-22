@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-function Dialog ({ title, isOpen, onClose, onCreate, children }) {
+function Dialog ({ title, isOpen, onClose, onCreate, children, footer }) {
   return (
     <Modal show={isOpen} onHide={onClose}>
       <Modal.Header closeButton>
@@ -9,8 +9,7 @@ function Dialog ({ title, isOpen, onClose, onCreate, children }) {
       </Modal.Header>
       <Modal.Body>{children}</Modal.Body>
       <Modal.Footer>
-        <Button onClick={onCreate}>Crear</Button>
-        <Button variant="danger" onClick={onClose}>Cancelar</Button>
+        { footer }
       </Modal.Footer>
     </Modal>
   )
