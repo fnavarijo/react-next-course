@@ -105,14 +105,24 @@ export default function Proyectos({ proyecto }) {
 
 export async function getServerSideProps({ query, req }) {
   const { token } = req.cookies;
-  const proyecto = await getProject(
-    { proyectoID: query.id },
-    { headers: { authorization: `Bearer ${token}` } }
-  );
+  
+  try {
+    const proyecto = await getProject(
+      { proyectoID: query.id },
+      { headers: { authorization: `Bearer ${token}` } }
+    );
 
-  return {
-    props: {
-      proyecto,
-    },
-  };
+    return {
+      props: {
+        proyecto,
+      },
+    };
+  } catch (error) {
+    return {
+      redirect: {
+        destination: '/dashboard',
+        permanent: false
+      }
+    }
+  }
 }
