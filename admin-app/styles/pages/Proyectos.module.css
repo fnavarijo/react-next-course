@@ -2,3 +2,13 @@
   font-weight: bold;
   margin-right: 8px;
 }
+
+.projectActivitiesSection {
+  margin-top: 2rem;
+}
+
+.activitiesCreate {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
